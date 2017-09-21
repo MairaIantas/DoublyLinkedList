@@ -7,6 +7,7 @@ namespace DoublyLinkedLists
     public class LinkedList<T> : IComparable<T>
     {
         public static String STUDENT = "Maira Iantas, 0273129";
+        public const String EXCEPTION = "No such element";
 
         /// <summary>
         /// Points to the first node in the list 
@@ -107,7 +108,7 @@ namespace DoublyLinkedLists
             }
             else
             {
-                throw new ApplicationException();
+                throw new ApplicationException(EXCEPTION);
             }
             return data;
         }
@@ -174,7 +175,7 @@ namespace DoublyLinkedLists
             }
             else
             {
-                throw new ApplicationException();
+                throw new ApplicationException(EXCEPTION);
             }
             return data;
         }
@@ -220,7 +221,7 @@ namespace DoublyLinkedLists
             }
             else
             {
-                throw new ApplicationException();
+                throw new ApplicationException(EXCEPTION);
             }
             return oldData;
         }
@@ -331,6 +332,7 @@ namespace DoublyLinkedLists
         private T unlinkHead()
         {
             Node<T> oldHead = _head;
+            _head.Previous = null;
             _head = _head.Next;
             _size--;
 

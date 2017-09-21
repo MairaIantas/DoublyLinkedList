@@ -78,6 +78,35 @@ namespace DoublyLinkedList.Tests
             Assert.That(() => listNode.Get(), Throws.Exception.TypeOf<ApplicationException>());
         }
 
+
+        /// <summary>
+        /// Test set node to the list
+        /// </summary>
+        [Test]
+        public void testSet()
+        {
+            Node<Employee> empNode = new Node<Employee>(new Employee(0));
+            Node<Employee> empNode1 = new Node<Employee>(new Employee(1));
+            LinkedList<Node<Employee>> listNode = new LinkedList<Node<Employee>>();
+
+            listNode.Add(empNode);
+
+            Assert.That(listNode.Set(empNode1), Is.EqualTo(empNode));
+            Assert.That(listNode.Get(), Is.EqualTo(empNode1));
+        }
+
+        /// <summary>
+        /// Test set Exception
+        /// </summary>
+        [Test]
+        public void tesSetException()
+        {
+            Node<Employee> empNode = new Node<Employee>(new Employee(0));
+            LinkedList<Node<Employee>> listNode = new LinkedList<Node<Employee>>();
+
+            Assert.That(() => listNode.Set(empNode), Throws.Exception.TypeOf<ApplicationException>());
+        }
+
         /// <summary>
         /// Test remove
         /// </summary>
@@ -157,7 +186,7 @@ namespace DoublyLinkedList.Tests
 
             listNode.Clear();
 
-            Assert.That(listNode.GetSize , Is.Zero);
+            Assert.That(listNode.GetSize, Is.Zero);
         }
     }
 }
