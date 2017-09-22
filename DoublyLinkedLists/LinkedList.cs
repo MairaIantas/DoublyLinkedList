@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DoublyLinkedLists
 {
-    public class LinkedList<T> : IComparable<T>
+    public class LinkedList<T> where T : IComparable<T>
     {
         public static String STUDENT = "Maira Iantas, 0273129";
         public const String EXCEPTION = "No such element";
@@ -101,16 +101,11 @@ namespace DoublyLinkedLists
         /// <returns></returns>
         public T Get()
         {
-            T data = default(T);
-            if (_size > 0)
-            {
-                data = _head.Data; ;
-            }
-            else
+            if (_size <= 0)
             {
                 throw new ApplicationException(EXCEPTION);
             }
-            return data;
+            return _head.Data;
         }
 
         /// <summary>
@@ -168,16 +163,11 @@ namespace DoublyLinkedLists
         /// <returns></returns>
         public T Remove()
         {
-            T data = default(T);
-            if (_size > 0)
-            {
-                data = unlinkHead();
-            }
-            else
+            if (_size <= 0)
             {
                 throw new ApplicationException(EXCEPTION);
             }
-            return data;
+            return unlinkHead();
         }
 
         /// <summary>
@@ -214,16 +204,11 @@ namespace DoublyLinkedLists
         /// <returns></returns>
         public T Set(T data)
         {
-            T oldData = default(T);
-            if (_size > 0)
-            {
-                oldData = setData(data, _head);
-            }
-            else
+            if (_size <= 0)
             {
                 throw new ApplicationException(EXCEPTION);
             }
-            return oldData;
+            return setData(data, _head); ;
         }
 
         /// <summary>
@@ -279,10 +264,8 @@ namespace DoublyLinkedLists
                 toAdd.Next = _head;
 
             }
-            else
-            {
-                _head = toAdd;
-            }
+
+            _head = toAdd;
 
             if (_size == 0)
             {
@@ -332,13 +315,16 @@ namespace DoublyLinkedLists
         private T unlinkHead()
         {
             Node<T> oldHead = _head;
-            _head.Previous = null;
             _head = _head.Next;
             _size--;
 
             if (_head == null)
             {
                 _tail = null;
+            }
+            else
+            {
+                _head.Previous = null;
             }
 
             return oldHead.Data;
@@ -356,17 +342,5 @@ namespace DoublyLinkedLists
         /// </summary>
         /// <param name="position"></param>
         private void validatePosition(int position) { }
-
-        /// <summary>
-        /// Compares the current instance with another object of the same type and returns an integer 
-        /// that indicates whether the current instance precedes, follows, or occurs in the same 
-        /// position in the sort order as the other object.
-        /// </summary>
-        /// <param name="other"></param>
-        /// <returns></returns>
-        public int CompareTo(T other)
-        {
-            return ((IComparable<T>)_head).CompareTo(other);
-        }
     }
 }

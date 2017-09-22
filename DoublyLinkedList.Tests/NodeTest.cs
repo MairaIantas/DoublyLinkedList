@@ -105,17 +105,5 @@ namespace DoublyLinkedList.Tests
 
         }
 
-        /// <summary>
-        /// Test the NotImplementedException message
-        /// </summary>
-        [Test]
-        public void testExceptionExpectedLambda()
-        {
-            Node<Employee> empNode = new Node<Employee>(new Employee(0));
-            Employee empNode1 = new Employee(1);
-
-            Assert.That(() => empNode.CompareTo(empNode1), Throws.Exception.TypeOf<NotImplementedException>());
-        }
-
     }
 }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DoublyLinkedLists
 {
-    public class Node<T> : IComparable<T>
+    public class Node<T> where T : IComparable<T>
     {
         public static String STUDENT = "Maira Iantas, 0273129";
 
@@ -50,18 +50,6 @@ namespace DoublyLinkedLists
             Data = data;
             Previous = previous;
             Next = next;
-        }
-
-        /// <summary>
-        /// Compares the current instance with another object of the same type and returns an integer 
-        /// that indicates whether the current instance precedes, follows, or occurs in the same 
-        /// position in the sort order as the other object.
-        /// </summary>
-        /// <param name="other"></param>
-        /// <returns></returns>
-        public int CompareTo(T other)
-        {
-            throw new NotImplementedException();
         }
     }
 }

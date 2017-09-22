@@ -37,7 +37,7 @@ namespace DoublyLinkedList.Tests
         [Test]
         public void testNoArgConstructor()
         {
-            LinkedList<Node<Employee>> listNode = new LinkedList<Node<Employee>>();
+            LinkedList<Employee> listNode = new LinkedList<Employee>();
 
             Assert.That(listNode, Is.Not.Null);
         }
@@ -46,10 +46,10 @@ namespace DoublyLinkedList.Tests
         /// Test add node to the list
         /// </summary>
         [Test]
-        public void testAdd()
+        public void testAddNodeIntoEmptyList()
         {
-            Node<Employee> empNode = new Node<Employee>(new Employee(0));
-            LinkedList<Node<Employee>> listNode = new LinkedList<Node<Employee>>();
+            Employee empNode = new Employee(0);
+            LinkedList<Employee> listNode = new LinkedList<Employee>();
 
             Assert.That(listNode.Add(empNode), Is.True);
         }
@@ -58,10 +58,10 @@ namespace DoublyLinkedList.Tests
         /// Test get node to the list
         /// </summary>
         [Test]
-        public void testGet()
+        public void testGetEmptyList()
         {
-            Node<Employee> empNode = new Node<Employee>(new Employee(0));
-            LinkedList<Node<Employee>> listNode = new LinkedList<Node<Employee>>();
+            Employee empNode = new Employee(0);
+            LinkedList<Employee> listNode = new LinkedList<Employee>();
             listNode.Add(empNode);
 
             Assert.That(listNode.Get(), Is.EqualTo(empNode));
@@ -71,23 +71,22 @@ namespace DoublyLinkedList.Tests
         /// Test get Exception
         /// </summary>
         [Test]
-        public void testGetException()
+        public void testGetEmptyListException()
         {
-            LinkedList<Node<Employee>> listNode = new LinkedList<Node<Employee>>();
+            LinkedList<Employee> listNode = new LinkedList<Employee>();
 
             Assert.That(() => listNode.Get(), Throws.Exception.TypeOf<ApplicationException>());
         }
-
 
         /// <summary>
         /// Test set node to the list
         /// </summary>
         [Test]
-        public void testSet()
+        public void testSetNodesIntoList()
         {
-            Node<Employee> empNode = new Node<Employee>(new Employee(0));
-            Node<Employee> empNode1 = new Node<Employee>(new Employee(1));
-            LinkedList<Node<Employee>> listNode = new LinkedList<Node<Employee>>();
+            Employee empNode = new Employee(0);
+            Employee empNode1 = new Employee(1);
+            LinkedList<Employee> listNode = new LinkedList<Employee>();
 
             listNode.Add(empNode);
 
@@ -99,22 +98,20 @@ namespace DoublyLinkedList.Tests
         /// Test set Exception
         /// </summary>
         [Test]
-        public void tesSetException()
+        public void testSetNodeIntoEmptyListException()
         {
-            Node<Employee> empNode = new Node<Employee>(new Employee(0));
-            LinkedList<Node<Employee>> listNode = new LinkedList<Node<Employee>>();
-
-            Assert.That(() => listNode.Set(empNode), Throws.Exception.TypeOf<ApplicationException>());
+            LinkedList<Employee> listNode = new LinkedList<Employee>();
+            Assert.That(() => listNode.Set(new Employee(0)), Throws.Exception.TypeOf<ApplicationException>());
         }
 
         /// <summary>
         /// Test remove
         /// </summary>
         [Test]
-        public void tesRemove()
+        public void testRemoveNodeInEmptyList()
         {
-            Node<Employee> empNode = new Node<Employee>(new Employee(0));
-            LinkedList<Node<Employee>> listNode = new LinkedList<Node<Employee>>();
+            Employee empNode = new Employee(0);
+            LinkedList<Employee> listNode = new LinkedList<Employee>();
             listNode.Add(empNode);
 
             Assert.That(listNode.Remove(), Is.EqualTo(empNode));
@@ -124,9 +121,9 @@ namespace DoublyLinkedList.Tests
         /// Test get Exception
         /// </summary>
         [Test]
-        public void testRemoveException()
+        public void testRemoveNodeInEmptyListException()
         {
-            LinkedList<Node<Employee>> listNode = new LinkedList<Node<Employee>>();
+            LinkedList<Employee> listNode = new LinkedList<Employee>();
 
             Assert.That(() => listNode.Remove(), Throws.Exception.TypeOf<ApplicationException>());
         }
@@ -135,10 +132,10 @@ namespace DoublyLinkedList.Tests
         /// Test Get Size
         /// </summary>
         [Test]
-        public void testGetSize()
+        public void testGetSizeList()
         {
-            Node<Employee> empNode = new Node<Employee>(new Employee(0));
-            LinkedList<Node<Employee>> listNode = new LinkedList<Node<Employee>>();
+            Employee empNode = new Employee(0);
+            LinkedList<Employee> listNode = new LinkedList<Employee>();
             listNode.Add(empNode);
 
             Assert.That(listNode.GetSize, Is.Not.Zero);
@@ -150,36 +147,36 @@ namespace DoublyLinkedList.Tests
         [Test]
         public void testGetSizeEqualsToZero()
         {
-            LinkedList<Node<Employee>> listNode = new LinkedList<Node<Employee>>();
+            LinkedList<Employee> listNode = new LinkedList<Employee>();
 
             Assert.That(listNode.GetSize, Is.Zero);
         }
 
-        // <summary>
-        /// Test is empty
+        /// <summary>
+        /// Test if it is empty
         /// </summary>
         [Test]
-        public void testIsEmpty()
+        public void testIsEmptyList()
         {
-            LinkedList<Node<Employee>> listNode = new LinkedList<Node<Employee>>();
+            LinkedList<Employee> listNode = new LinkedList<Employee>();
 
             Assert.That(listNode.IsEmpty, Is.True);
 
-            Node<Employee> empNode = new Node<Employee>(new Employee(0));
+            Employee empNode = new Employee(0);
 
             listNode.Add(empNode);
 
             Assert.That(listNode.IsEmpty, Is.False);
         }
 
-        // <summary>
+        /// <summary>
         /// Test Clear
         /// </summary>
         [Test]
         public void testClear()
         {
-            LinkedList<Node<Employee>> listNode = new LinkedList<Node<Employee>>();
-            Node<Employee> empNode = new Node<Employee>(new Employee(0));
+            LinkedList<Employee> listNode = new LinkedList<Employee>();
+            Employee empNode = new Employee(0);
             listNode.Add(empNode);
 
             Assert.That(listNode.IsEmpty, Is.False);
